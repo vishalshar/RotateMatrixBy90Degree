@@ -1,0 +1,44 @@
+public class Rotate90 {
+
+    public static void main(String args[]) {
+        int arr[][] = {{1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12},
+            {13, 14, 15, 16}};
+
+        rotate90(arr);
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                System.out.print(arr[i][j]+" ");
+            }
+            System.out.println();
+
+        }
+
+    }
+
+    public static int[][] rotate90(int arr[][]) {
+        for (int i = 0, n = arr.length - 1; i < arr.length / 2; i++, n--) {
+            for (int j = i, k = n; j < arr.length-i && k > 0; j++, k--) {
+                
+                int temp = arr[i][j];
+                
+                // move values in cyclic order
+                arr[i][j] = arr[k][i];
+
+                int temp2 = arr[j][n];
+                arr[j][n] = temp;
+
+                temp = arr[n][k];
+                arr[n][k] = temp2;
+
+                temp2 = arr[k][i];
+                arr[k][i] = temp;
+
+            }
+        }
+       
+        return arr;
+    }
+}
